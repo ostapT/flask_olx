@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Announcements</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#update-btn").click(function() {
+                $.ajax({
+                    url: "/update_ads",
+                    type: "GET",
+                    beforeSend: function() {
+                        $("#loading").show();
+                    },
+                    success: function(response) {
+                        $("ul").html(response);
+                        $("#loading").hide();
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+
+            $("ul").on("click", ".delete-btn", function() {
+                var listItem = $(this).closest("li");
+                listItem.remove();
+            });
+        });
+    </script>
+    <style>
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>updated announcements</h1>
+    <div id="loading">
+        Loading...
+    </div>
+    <form method="POST">
+        <button type="submit">Update</button>
+    </form>
+    <ul>
+        {% for ad_data in ads_data %}
+            <li>
+                <h3>{{ ad_data.title }}</h3>
+                <p>Ціна: {{ ad_data.price }}</p>
+                <img src="{{ ad_data.image }}" alt="image of the announcement" style="width: 200px; height: 200px;">
+                <button class="delete-btn">Delete</button>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
