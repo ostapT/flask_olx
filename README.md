@@ -5,7 +5,7 @@ This project is a web application based on the Flask framework, which allows use
 ## Installation
 1. Clone the project repository:
 ```shell
-git clone 
+git clone https://github.com/ostapT/flask_olx.git
 cd flask_olx
 ```
 2. Create and activate a virtual environment:
@@ -32,9 +32,9 @@ flask run
 Now you can visit the app at http://127.0.0.1:5000/
 
 ## Endpoints:
-http://127.0.0.1:5000/register - for user registration
-http://127.0.0.1:5000/login - for user login
-http://127.0.0.1:5000/update_ads - to get OLX ads
+- http://127.0.0.1:5000/register - for user registration
+- http://127.0.0.1:5000/login - for user login
+- http://127.0.0.1:5000/update_ads - to get OLX ads
 
 ## Usage Instructions
 - The _**/update_ads**_ page will display 100 random classified ads from the OLX website.
