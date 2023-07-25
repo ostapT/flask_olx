@@ -58,13 +58,14 @@ def register():
         hashed_password = bcrypt.generate_password_hash(
             request.form["password"]
         )
+        hashed_password_str = hashed_password.decode('utf-8')
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             return render_template(
                 "register.html",
                 error="That username already exists.",
             )
-        new = User(username=form.username.data, password=hashed_password)
+        new = User(username=form.username.data, password=hashed_password_str)
         db.session.add(new)
         db.session.commit()
         return redirect(url_for("login"))
@@ -83,4 +84,4 @@ def update_ads():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=80)

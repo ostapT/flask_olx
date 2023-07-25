@@ -2,6 +2,12 @@
 
 This project is a web application based on the Flask framework, which allows users to view random ads from the OLX website. Users can register and log in to the system to get updated lists of ads.
 
+Deployed project using AWS RDS on AWS EC2 [here](http://44.202.91.137:5000/update_ads)
+You can use credentials:
+username: user
+password: user1234
+Or you can register new user [here](http://44.202.91.137:5000/register)
+
 ## Installation
 1. Clone the project repository:
 ```shell
